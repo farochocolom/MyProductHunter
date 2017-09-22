@@ -1,24 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-UltraLight</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Post Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PostController" customModule="MyProductHunter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-c9-9Tb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="94" id="bma-sT-lXV" customClass="PostCell" customModule="MyProductHunter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="94"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bma-sT-lXV" id="SC8-i5-xbe">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Su-BH-9qA">
+                                                    <rect key="frame" x="8" y="8" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="9II-PD-hAj"/>
+                                                        <constraint firstAttribute="height" constant="65" id="blJ-Ln-p1u"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N84-Na-O8E">
+                                                    <rect key="frame" x="81" y="8" width="231" height="25"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGA-zw-0wG">
+                                                    <rect key="frame" x="81" y="36" width="231" height="37"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="37" id="dWp-L8-xzz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="N84-Na-O8E" firstAttribute="trailing" secondItem="SC8-i5-xbe" secondAttribute="trailingMargin" id="1k6-NM-NTN"/>
+                                                <constraint firstItem="N84-Na-O8E" firstAttribute="leading" secondItem="5Su-BH-9qA" secondAttribute="trailing" constant="8" id="Pkh-h5-eXW"/>
+                                                <constraint firstItem="MGA-zw-0wG" firstAttribute="trailing" secondItem="SC8-i5-xbe" secondAttribute="trailingMargin" id="e8r-GK-3Qg"/>
+                                                <constraint firstItem="5Su-BH-9qA" firstAttribute="leading" secondItem="SC8-i5-xbe" secondAttribute="leadingMargin" id="erT-sD-4Jw"/>
+                                                <constraint firstItem="5Su-BH-9qA" firstAttribute="top" secondItem="SC8-i5-xbe" secondAttribute="topMargin" id="v4Y-9M-g6g"/>
+                                                <constraint firstItem="MGA-zw-0wG" firstAttribute="leading" secondItem="5Su-BH-9qA" secondAttribute="trailing" constant="8" id="vgE-tk-wgx"/>
+                                                <constraint firstItem="MGA-zw-0wG" firstAttribute="top" secondItem="N84-Na-O8E" secondAttribute="bottom" constant="3" id="y0c-cJ-kV9"/>
+                                                <constraint firstItem="N84-Na-O8E" firstAttribute="top" secondItem="SC8-i5-xbe" secondAttribute="topMargin" id="zJc-cK-XMn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="N84-Na-O8E" id="eOy-Wn-axZ"/>
+                                            <outlet property="taglineLabel" destination="MGA-zw-0wG" id="bBT-eh-FeV"/>
+                                            <outlet property="thumbnailImange" destination="5Su-BH-9qA" id="7hu-k9-US5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hGe-c9-9Tb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QDq-vq-Hpr"/>
+                            <constraint firstItem="hGe-c9-9Tb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wpe-hh-9zf"/>
+                            <constraint firstItem="hGe-c9-9Tb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dL2-So-oHn"/>
+                            <constraint firstItem="hGe-c9-9Tb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fYC-B3-aUF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="postsTable" destination="hGe-c9-9Tb" id="vMZ-si-dre"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="135" y="95.070422535211264"/>
         </scene>
     </scenes>
 </document>

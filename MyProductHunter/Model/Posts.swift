@@ -13,6 +13,7 @@ struct Post: Decodable {
     var tagline: String!
     var commentCount: Int!
     var thumbnailUrl: URL!
+    var image = UIImage()
     var posts = [Post]()
 
     
