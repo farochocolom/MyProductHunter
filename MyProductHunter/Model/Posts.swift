@@ -6,8 +6,20 @@
 //  Copyright © 2017 Specialist. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Posts {
+struct Post: Decodable {
+    var name: String!
+    var tagline: String!
+    var commentCount: Int!
+    var thumbnailUrl: URL!
+    var posts = [Post]()
+
     
+    init(name: String, tagline: String, commentCount: Int , thumbnailUrl: URL) {
+        self.name = name
+        self.tagline = tagline
+        self.commentCount = commentCount
+        self.thumbnailUrl = thumbnailUrl
+    }
 }
