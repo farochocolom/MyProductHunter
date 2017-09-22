@@ -21,17 +21,13 @@ struct Comment: Decodable {
         self.postedByUsername = postedByUsername
     }
     
-    // Main container - "search_results: []"
     enum CommentsResultKeys: String, CodingKey {
         case comments
         
-        // Second container - { listing: listing_properties,
-        //                      pricing_quote: values}
         enum CommentKeys: String, CodingKey {
             case body
             case user
-            
-            // Inside the listing container - "listing" : values
+        
             enum UserWhoCommentedKeys: String, CodingKey {
                 case name
                 case username
@@ -41,14 +37,10 @@ struct Comment: Decodable {
     
     init(from decoder: Decoder) throws {
         
-        // Go into main container
         var commentsArrayContainer = try decoder.container(keyedBy: CommentsResultKeys.self)
         
-        // Get the array of unkeyed listings container
         var commentArray = try commentsArrayContainer.nestedUnkeyedContainer(forKey: .comments)
-        
-        
-        // loop through every listing element
+    
         while !commentArray.isAtEnd {
             
             let commentContainer = try commentArray.nestedContainer(keyedBy: CommentsResultKeys.CommentKeys.self)
@@ -64,7 +56,6 @@ struct Comment: Decodable {
             
             let comment = Comment(body: commentBody, postedByName: name, postedByUsername: username)
             
-            // add the listing object to the structs listings arrays
             self.comments.append(comment)
         }
     }
