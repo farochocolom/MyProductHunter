@@ -10,7 +10,7 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailImange: UIImageView!
+    @IBOutlet weak var thumbnailImange: CustomImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
     
@@ -23,6 +23,19 @@ class PostCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(post: Post) {
+        nameLabel.text = post.name
+        taglineLabel.text = post.tagline
+        
+        setupThumbnailImage(post: post)
+    }
+    
+    func setupThumbnailImage(post: Post) {
+        guard let thumbnailImageUrl = post.thumbnailUrl else {return}
+        
+        thumbnailImange.loadImageFromUrlString(urlString: thumbnailImageUrl)
     }
 
 }

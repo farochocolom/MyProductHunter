@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-c9-9Tb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-c9-9Tb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -35,7 +35,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Su-BH-9qA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Su-BH-9qA" customClass="CustomImageView" customModule="MyProductHunter" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="9II-PD-hAj"/>
@@ -72,7 +72,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="N84-Na-O8E" id="eOy-Wn-axZ"/>
                                             <outlet property="taglineLabel" destination="MGA-zw-0wG" id="bBT-eh-FeV"/>
-                                            <outlet property="thumbnailImange" destination="5Su-BH-9qA" id="7hu-k9-US5"/>
+                                            <outlet property="thumbnailImange" destination="5Su-BH-9qA" id="q4e-uo-JgN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

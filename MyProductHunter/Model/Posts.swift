@@ -12,12 +12,12 @@ struct Post: Decodable {
     var name: String!
     var tagline: String!
     var commentCount: Int!
-    var thumbnailUrl: URL!
+    var thumbnailUrl: String!
     var image = UIImage()
     var posts = [Post]()
 
     
-    init(name: String, tagline: String, commentCount: Int , thumbnailUrl: URL) {
+    init(name: String, tagline: String, commentCount: Int , thumbnailUrl: String) {
         self.name = name
         self.tagline = tagline
         self.commentCount = commentCount
@@ -44,7 +44,7 @@ extension Post {
     
     init(from decoder: Decoder) throws {
         
-        var postsArrayContainer = try decoder.container(keyedBy: PostsResultKeys.self)
+        let postsArrayContainer = try decoder.container(keyedBy: PostsResultKeys.self)
         
         var postsArray = try postsArrayContainer.nestedUnkeyedContainer(forKey: .posts)
         
@@ -58,7 +58,7 @@ extension Post {
             
             let thumbnailContainer = try postContainer.nestedContainer(keyedBy: PostsResultKeys.PostKeys.ThumbnailKeys.self, forKey: .thumbnail)
             
-            let imageUrl = try thumbnailContainer.decode(URL.self, forKey: .imageUrl)
+            let imageUrl = try thumbnailContainer.decode(String.self, forKey: .imageUrl)
             
             let post = Post(name: postName, tagline: postTagline, commentCount: commentCount, thumbnailUrl: imageUrl)
             
