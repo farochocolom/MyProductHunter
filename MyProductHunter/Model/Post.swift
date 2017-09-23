@@ -12,15 +12,17 @@ struct Post: Decodable {
     var name: String!
     var tagline: String!
     var commentCount: Int!
+    var votesCount: Int!
     var thumbnailUrl: String!
     var image = UIImage()
     var posts = [Post]()
 
     
-    init(name: String, tagline: String, commentCount: Int , thumbnailUrl: String) {
+    init(name: String, tagline: String, commentCount: Int, votesCount: Int, thumbnailUrl: String) {
         self.name = name
         self.tagline = tagline
         self.commentCount = commentCount
+        self.votesCount = votesCount
         self.thumbnailUrl = thumbnailUrl
     }
 }
@@ -34,6 +36,7 @@ extension Post {
             case name
             case tagline
             case commentCount = "comments_count"
+            case voteCount = "votes_count"
             case thumbnail
             
             enum ThumbnailKeys: String, CodingKey {
@@ -55,12 +58,13 @@ extension Post {
             let postName = try postContainer.decode(String.self, forKey: .name)
             let postTagline = try postContainer.decode(String.self, forKey: .tagline)
             let commentCount = try postContainer.decode(Int.self, forKey: .commentCount)
+            let votesCount = try postContainer.decode(Int.self, forKey: .voteCount)
             
             let thumbnailContainer = try postContainer.nestedContainer(keyedBy: PostsResultKeys.PostKeys.ThumbnailKeys.self, forKey: .thumbnail)
             
             let imageUrl = try thumbnailContainer.decode(String.self, forKey: .imageUrl)
             
-            let post = Post(name: postName, tagline: postTagline, commentCount: commentCount, thumbnailUrl: imageUrl)
+            let post = Post(name: postName, tagline: postTagline, commentCount: commentCount, votesCount: votesCount, thumbnailUrl: imageUrl)
             
             self.posts.append(post)
         }

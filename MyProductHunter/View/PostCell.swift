@@ -14,6 +14,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
     
+    @IBOutlet weak var votesCountLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,7 +29,10 @@ class PostCell: UITableViewCell {
     func configureCell(post: Post) {
         nameLabel.text = post.name
         taglineLabel.text = post.tagline
-        
+        guard let voteCount = post.votesCount else {
+            return
+        }
+        votesCountLabel.text = "\(voteCount)"
         setupThumbnailImage(post: post)
     }
     
