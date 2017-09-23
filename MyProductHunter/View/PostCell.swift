@@ -10,7 +10,7 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailImange: UIImageView!
+    @IBOutlet weak var thumbnailImange: CustomImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
     
