@@ -20,6 +20,7 @@
 		9043F2DA1F733E90004FA19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9043F2D91F733E90004FA19C /* Assets.xcassets */; };
 		9043F2DD1F733E90004FA19C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9043F2DB1F733E90004FA19C /* LaunchScreen.storyboard */; };
 		90D0C7731F7549BD0066C460 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D0C7721F7549BD0066C460 /* PostCell.swift */; };
+		90D0C7751F75C8970066C460 /* UIImage+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D0C7741F75C8970066C460 /* UIImage+Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		9043F2DC1F733E90004FA19C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9043F2DE1F733E90004FA19C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D0C7721F7549BD0066C460 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		90D0C7741F75C8970066C460 /* UIImage+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Request.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		9043F2D11F733E8F004FA19C /* MyProductHunter */ = {
 			isa = PBXGroup;
 			children = (
+				90D0C7761F75C89C0066C460 /* Extensions */,
 				90D0C7711F7549880066C460 /* Controller */,
 				90D0C7701F75497D0066C460 /* View */,
 				9031B0421F74A64900187898 /* Model */,
@@ -155,6 +158,14 @@
 				9043F2D41F733E90004FA19C /* PostController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		90D0C7761F75C89C0066C460 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90D0C7741F75C8970066C460 /* UIImage+Request.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 				9043F2D51F733E90004FA19C /* PostController.swift in Sources */,
 				9031B0481F74A74400187898 /* Posts.swift in Sources */,
 				9031B0401F74A5DC00187898 /* ProfileService.swift in Sources */,
+				90D0C7751F75C8970066C460 /* UIImage+Request.swift in Sources */,
 				9031B04A1F74AE3600187898 /* Comment.swift in Sources */,
 				9043F2D31F733E90004FA19C /* AppDelegate.swift in Sources */,
 				90D0C7731F7549BD0066C460 /* PostCell.swift in Sources */,

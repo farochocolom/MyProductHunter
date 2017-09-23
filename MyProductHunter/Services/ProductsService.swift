@@ -64,8 +64,5 @@ struct ProductService {
             })
         }.resume()
         
-        
-
-        
     }
 }
