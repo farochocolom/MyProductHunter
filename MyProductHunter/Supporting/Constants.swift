@@ -13,7 +13,9 @@ struct Constants {
     struct URLs {
         static let BASE_URL = "https://api.producthunt.com/v1"
         static let MY_PROFILE = "/me"
-        static let POSTS = "/feed"
+        static let FEED = "/feed"
+        static let POSTS = "/posts"
+        static let COMMENTS = "/comments"
         
     }
 }

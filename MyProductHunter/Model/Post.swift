@@ -9,6 +9,7 @@
 import UIKit
 
 struct Post: Decodable {
+    var id: Int!
     var name: String!
     var tagline: String!
     var commentCount: Int!
@@ -18,7 +19,8 @@ struct Post: Decodable {
     var posts = [Post]()
 
     
-    init(name: String, tagline: String, commentCount: Int, votesCount: Int, thumbnailUrl: String) {
+    init(id: Int,name: String, tagline: String, commentCount: Int, votesCount: Int, thumbnailUrl: String) {
+        self.id = id
         self.name = name
         self.tagline = tagline
         self.commentCount = commentCount
@@ -33,6 +35,7 @@ extension Post {
         case posts
         
         enum PostKeys: String, CodingKey {
+            case id
             case name
             case tagline
             case commentCount = "comments_count"
@@ -55,6 +58,7 @@ extension Post {
             
             let postContainer = try postsArray.nestedContainer(keyedBy: PostsResultKeys.PostKeys.self)
             
+            let postId = try postContainer.decode(Int.self, forKey: .id)
             let postName = try postContainer.decode(String.self, forKey: .name)
             let postTagline = try postContainer.decode(String.self, forKey: .tagline)
             let commentCount = try postContainer.decode(Int.self, forKey: .commentCount)
@@ -64,7 +68,7 @@ extension Post {
             
             let imageUrl = try thumbnailContainer.decode(String.self, forKey: .imageUrl)
             
-            let post = Post(name: postName, tagline: postTagline, commentCount: commentCount, votesCount: votesCount, thumbnailUrl: imageUrl)
+            let post = Post(id: postId, name: postName, tagline: postTagline, commentCount: commentCount, votesCount: votesCount, thumbnailUrl: imageUrl)
             
             self.posts.append(post)
         }

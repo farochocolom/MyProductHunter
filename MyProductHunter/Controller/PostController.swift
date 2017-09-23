@@ -25,8 +25,10 @@ class PostController: UIViewController {
         postsTable.dataSource = self
         postsTable.delegate = self
         
+        postsTable.rowHeight = UITableViewAutomaticDimension
+        postsTable.estimatedRowHeight = 100
+        
         ProductService.getFeaturedProducts { (posts) in
-            
             guard let postList = posts else {return}
             self.posts = postList
         }
@@ -55,9 +57,27 @@ extension PostController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        
+        performSegue(withIdentifier: "ViewComments", sender: post)
+    }
 }
 
 extension PostController: UITableViewDelegate {
     
+}
+
+extension PostController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ViewComments" {
+            if let destinationVC = segue.destination as? CommentsController{
+                if let post = sender as? Post {
+                    destinationVC.post = post
+                }
+            }
+        }
+    }
 }
 
