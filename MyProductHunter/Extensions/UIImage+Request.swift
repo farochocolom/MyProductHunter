@@ -8,37 +8,23 @@
 
 import UIKit
 
-let imageCache = NSCache<UIImage, URL>()
+var imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
-    func getPostImage(url: URL) {
-        let session = URLSession.shared
-        let dispatchGroup = DispatchGroup()
+    func loadImageFromUrlString(urlString: String) {
+        let url = URL(string: urlString)!
         
-        if let imageFromCache = try? imageCache.object(forKey: url) {
-            self.image = imageFromCache
-        }
-        
-        dispatchGroup.enter()
-        session.dataTask(with: url) { (data, res, err) in
-            
-            if let error = err{
-                print("Error getting picture: \(error)")
-                dispatchGroup.leave()
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                return
             }
             
-            guard let response = res as? HTTPURLResponse,
-                let imageData = data else {
-                    dispatchGroup.leave()
-                    return
-            }
+            guard let imageData = data else {return}
             
-            DispatchQueue.global(qos: .background).async {
-                let imagetoCache = UIImage(data: imageData)
-                
-                try? imageCache.setObject(imagetoCache!, forKey: url)
+            DispatchQueue.main.async {
+                self.image = UIImage(data: imageData)
             }
-            }.resume()
-        
+        }.resume()
     }
 }

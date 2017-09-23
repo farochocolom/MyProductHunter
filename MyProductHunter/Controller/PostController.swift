@@ -29,14 +29,6 @@ class PostController: UIViewController {
             
             guard let postList = posts else {return}
             self.posts = postList
-            
-            for var post in self.posts {
-                ProductService.getPostImage(url: post.thumbnailUrl) { (image) in
-                    guard let img = image else {return}
-                    post.image = img
-                    self.postsTable.reloadData()
-                }
-            }
         }
     }
 
@@ -55,10 +47,7 @@ extension PostController: UITableViewDataSource {
         let cell = postsTable.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
         let post = posts[indexPath.row]
-        
-        cell.nameLabel.text = post.name
-        cell.taglineLabel.text = post.tagline
-        cell.thumbnailImange.image = post.image
+        cell.configureCell(post: post)
         
         return cell
     }

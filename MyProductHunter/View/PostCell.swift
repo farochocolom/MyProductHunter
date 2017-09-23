@@ -24,5 +24,18 @@ class PostCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCell(post: Post) {
+        nameLabel.text = post.name
+        taglineLabel.text = post.tagline
+        
+        setupThumbnailImage(post: post)
+    }
+    
+    func setupThumbnailImage(post: Post) {
+        guard let thumbnailImageUrl = post.thumbnailUrl else {return}
+        
+        thumbnailImange.loadImageFromUrlString(urlString: thumbnailImageUrl)
+    }
 
 }
